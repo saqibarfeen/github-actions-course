@@ -57,7 +57,9 @@ jobs:
       run: echo "This is because checkbox is selected|${{ github.event.inputs.checkbox1 }}"
 
     - name: run step if checkbox1 is null, means it is from push
-      if: ${{ github.event.inputs.selective }} =="false" && ${{ github.event.inputs.checkbox1 }} ==""
+      if: |
+       github.event.inputs.selective }} =='false' &&
+       (github.event.inputs.checkbox1 }} =='')
       run: echo multiline is null
 
     - name: run step if checkbox is selected
