@@ -20,6 +20,15 @@ on:
         # Input has to be provided for the workflow to run
         required: true
 
+      selective:
+        # Friendly description to be shown in the UI instead of 'name'
+        description: 'Deploy only selected markets?'
+        type: boolean
+        # Default value if no value is explicitly provided
+        # default: false
+        # Input has to be provided for the workflow to run
+        required: false
+
       checkbox1:
         # Friendly description to be shown in the UI instead of 'name'
         description: 'Deploy DOT-PERP OME?'
@@ -47,8 +56,8 @@ jobs:
       if: github.event.inputs.checkbox1 == 'true'
       run: echo "This is because checkbox is selected|${{ github.event.inputs.checkbox1 }}"
 
-    - name: run step if checkbox1 is null
-      if: ${{ github.event.inputs.checkbox1 }} ==""
+    - name: run step if checkbox1 is null, means it is from push
+      if: ${{ github.event.inputs.selective }} =="" && ${{ github.event.inputs.checkbox1 }} ==""
       run: echo multiline is null
 
     - name: run step if checkbox is selected
