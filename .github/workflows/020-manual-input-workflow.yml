@@ -20,6 +20,16 @@ on:
         # Input has to be provided for the workflow to run
         required: true
 
+      checkbox1:
+        # Friendly description to be shown in the UI instead of 'name'
+        description: 'Deploy DOT-PERP OME?'
+        type: boolean
+        # Default value if no value is explicitly provided
+        default: false
+        # Input has to be provided for the workflow to run
+        required: false
+      
+
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "greet"
