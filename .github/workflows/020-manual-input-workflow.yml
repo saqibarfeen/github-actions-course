@@ -25,7 +25,7 @@ on:
         description: 'Deploy only selected markets?'
         type: boolean
         # Default value if no value is explicitly provided
-        # default: false
+        default: true
         # Input has to be provided for the workflow to run
         required: false
 
