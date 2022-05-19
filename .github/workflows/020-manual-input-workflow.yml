@@ -33,6 +33,14 @@ jobs:
     - name: Send greeting
       run: echo "Hello ${{ github.event.inputs.name }}"
 
+    - name: Check if empty
+      if: github.event.inputs.checkbox1 == 'true'
+      run: echo "This is because checkbox is selected|${{ github.event.inputs.checkbox1 }}"
 
-    - name: New
-      run: echo "Input|${{ github.event.inputs.name }}"
+    - name: run step if checkbox1 is null
+      if: ${{ github.event.inputs.checkbox1 }} !=""
+      run: echo multiline is null
+
+    - name: run step if checkbox is selected
+      if: github.event.inputs.checkbox1 == 'true'
+      run: echo "This is because checkbox is selected|${{ github.event.inputs.checkbox1 }}"
